@@ -12,6 +12,7 @@ typedef struct {
     double graphBottomY;
     double graphTopY;
     int32_t xTicks;
+    int32_t yTicks;
 } graph_t;
 
 graph_t self;
@@ -27,6 +28,7 @@ void init() {
     self.graphBottomY = -140;
     self.graphTopY = 150;
     self.xTicks = 10;
+    self.yTicks = 10;
 }
 
 int32_t import(char *filename) {
@@ -109,6 +111,7 @@ void render() {
     turtleGoto(self.graphRightX + pensizehalf, self.graphBottomY - pensizehalf);
     turtlePenUp();
     turtlePenSize(pensizehalf);
+    turtleTextWriteString("Seconds", (self.graphLeftX + self.graphRightX) / 2, self.graphBottomY - pensizehalf - 30, 8, 50);
     for (int32_t i = 0; i < self.xTicks; i++) {
         double tickX = self.graphLeftX - pensizehalf + (self.graphRightX - self.graphLeftX + pensizehalf * 2) / (self.xTicks - 1) * i;
         turtleGoto(tickX, self.graphBottomY - 2);
@@ -118,11 +121,19 @@ void render() {
         double adjustedXScale = (self.graphRightX - self.graphLeftX + pensizehalf * 2) / (self.graphMaximums -> data[0].d - self.graphMinimums -> data[0].d);
         turtleTextWriteStringf(tickX, self.graphBottomY - pensizehalf - 12, 8, 50, "%.0lf", (tickX - self.graphLeftX + pensizehalf) / adjustedXScale);
     }
-    turtleTextWriteStringf(self.graphLeftX - pensizehalf - 5, self.graphBottomY - pensizehalf + 3, 8, 100, "%.3lfuW", self.graphMinimums -> data[1].d);
-    turtleTextWriteStringf(self.graphLeftX - pensizehalf - 5, self.graphTopY + pensizehalf - 3, 8, 100, "%.3lfuW", self.graphMaximums -> data[1].d);
-    turtleTextWriteString("Seconds", (self.graphLeftX + self.graphRightX) / 2, self.graphBottomY - pensizehalf - 30, 8, 50);
-    turtleTextWriteStringf(self.graphLeftX - pensizehalf, self.graphBottomY - pensizehalf - 12, 8, 50, "%.0lf", self.graphMinimums -> data[0].d - self.graphMinimums -> data[0].d);
-    turtleTextWriteStringf(self.graphRightX + pensizehalf, self.graphBottomY - pensizehalf - 12, 8, 50, "%.0lf", self.graphMaximums -> data[0].d - self.graphMinimums -> data[0].d);
+    for (int32_t i = 0; i < self.yTicks; i++) {
+        double tickY = self.graphBottomY - pensizehalf + (self.graphTopY - self.graphBottomY + pensizehalf * 2) / (self.yTicks - 1) * i;
+        turtleGoto(self.graphLeftX - 2, tickY);
+        turtlePenDown();
+        turtleGoto(self.graphLeftX - 6, tickY);
+        turtlePenUp();
+        double adjustedYScale = yScale = (self.graphTopY - self.graphBottomY + pensizehalf * 2) / (self.graphMaximums -> data[1].d - self.graphMinimums -> data[1].d);
+        turtleTextWriteUnicodef(self.graphLeftX - pensizehalf - 8, tickY, 8, 100, "%.3lfµW", (tickY - self.graphBottomY + pensizehalf) / adjustedYScale + self.graphMinimums -> data[1].d);
+    }
+    // turtleTextWriteStringf(self.graphLeftX - pensizehalf - 5, self.graphBottomY - pensizehalf + 3, 8, 100, "%.3lfuW", self.graphMinimums -> data[1].d);
+    // turtleTextWriteStringf(self.graphLeftX - pensizehalf - 5, self.graphTopY + pensizehalf - 3, 8, 100, "%.3lfuW", self.graphMaximums -> data[1].d);
+    // turtleTextWriteStringf(self.graphLeftX - pensizehalf, self.graphBottomY - pensizehalf - 12, 8, 50, "%.0lf", self.graphMinimums -> data[0].d - self.graphMinimums -> data[0].d);
+    // turtleTextWriteStringf(self.graphRightX + pensizehalf, self.graphBottomY - pensizehalf - 12, 8, 50, "%.0lf", self.graphMaximums -> data[0].d - self.graphMinimums -> data[0].d);
     /* render mouse */
     turtlePenSize(5);
     if (turtle.mouseX > self.graphLeftX - pensizehalf * 2 && turtle.mouseX < self.graphRightX + pensizehalf * 2 && turtle.mouseY > self.graphBottomY && turtle.mouseY < self.graphTopY) {
@@ -135,7 +146,7 @@ void render() {
             double xDisplay = self.content -> data[mouseIndex].r -> data[0].d - self.graphMinimums -> data[0].d;
             turtleRectangle(xValue + 5, yValue + 4, xValue + 5 + 4 + turtleTextGetStringLengthf(8, "%.0lf, %.3lfuW", xDisplay, self.content -> data[mouseIndex].r -> data[1].d), yValue + 16);
             tt_setColor(TT_COLOR_BACKGROUND);
-            turtleTextWriteStringf(xValue + 7, yValue + 10, 8, 0, "%.0lf, %.3lfuW", xDisplay, self.content -> data[mouseIndex].r -> data[1].d);
+            turtleTextWriteUnicodef(xValue + 7, yValue + 10, 8, 0, "%.0lf, %.3lfµW", xDisplay, self.content -> data[mouseIndex].r -> data[1].d);
         }
     }
 }
