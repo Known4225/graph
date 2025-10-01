@@ -37,8 +37,20 @@ int32_t import(char *filename) {
         return -1;
     }
     list_delete(self.content, 0);
-    /* sort graph by X field (todo) */
-
+    /* sort graph by X field */
+    for (int32_t i = 0; i < self.content -> length; i++) {
+        for (int32_t j = 0; j < self.content -> length; j++) {
+            double maximum = self.content -> data[i].r -> data[0].d;
+            int32_t maximumIndex = i;
+            if (self.content -> data[j].r -> data[0].d > maximum) {
+                maximumIndex = j;
+                maximum = self.content -> data[j].r -> data[0].d;
+            }
+            list_t *swap = self.content -> data[maximumIndex].r;
+            self.content -> data[maximumIndex].r = self.content -> data[i].r;
+            self.content -> data[i].r = swap;
+        }
+    }
     /* get top and bottom bounds */
     self.graphMinimums -> data[0].d = self.content -> data[0].r -> data[0].d;
     self.graphMaximums -> data[0].d = self.content -> data[self.content -> length - 1].r -> data[0].d;
