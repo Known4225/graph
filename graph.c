@@ -27,8 +27,8 @@ void init() {
     self.graphRightX = 200;
     self.graphBottomY = -140;
     self.graphTopY = 150;
-    self.xTicks = 10;
-    self.yTicks = 10;
+    self.xTicks = 11;
+    self.yTicks = 3;
 }
 
 int32_t import(char *filename) {
