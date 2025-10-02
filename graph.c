@@ -98,7 +98,6 @@ void render() {
             mouseIndex = i;
             minMouseX = fabs(xValue - turtle.mouseX);
         }
-        // printf("%lf %lf\n", xValue, yValue);
     }
     turtlePenUp();
     /* render graph */
@@ -127,13 +126,9 @@ void render() {
         turtlePenDown();
         turtleGoto(self.graphLeftX - 6, tickY);
         turtlePenUp();
-        double adjustedYScale = yScale = (self.graphTopY - self.graphBottomY + pensizehalf * 2) / (self.graphMaximums -> data[1].d - self.graphMinimums -> data[1].d);
+        double adjustedYScale = (self.graphTopY - self.graphBottomY + pensizehalf * 2) / (self.graphMaximums -> data[1].d - self.graphMinimums -> data[1].d);
         turtleTextWriteUnicodef(self.graphLeftX - pensizehalf - 8, tickY, 8, 100, "%.3lfµW", (tickY - self.graphBottomY + pensizehalf) / adjustedYScale + self.graphMinimums -> data[1].d);
     }
-    // turtleTextWriteStringf(self.graphLeftX - pensizehalf - 5, self.graphBottomY - pensizehalf + 3, 8, 100, "%.3lfuW", self.graphMinimums -> data[1].d);
-    // turtleTextWriteStringf(self.graphLeftX - pensizehalf - 5, self.graphTopY + pensizehalf - 3, 8, 100, "%.3lfuW", self.graphMaximums -> data[1].d);
-    // turtleTextWriteStringf(self.graphLeftX - pensizehalf, self.graphBottomY - pensizehalf - 12, 8, 50, "%.0lf", self.graphMinimums -> data[0].d - self.graphMinimums -> data[0].d);
-    // turtleTextWriteStringf(self.graphRightX + pensizehalf, self.graphBottomY - pensizehalf - 12, 8, 50, "%.0lf", self.graphMaximums -> data[0].d - self.graphMinimums -> data[0].d);
     /* render mouse */
     turtlePenSize(5);
     if (turtle.mouseX > self.graphLeftX - pensizehalf * 2 && turtle.mouseX < self.graphRightX + pensizehalf * 2 && turtle.mouseY > self.graphBottomY && turtle.mouseY < self.graphTopY) {
