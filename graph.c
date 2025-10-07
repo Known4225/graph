@@ -55,6 +55,10 @@ int32_t import(char *filename) {
             self.content -> data[i].r = swap;
         }
     }
+    /* take log10 of original data */
+    for (int32_t i = 0; i < self.content -> length; i++) {
+        self.content -> data[i].r -> data[1].d = log(self.content -> data[i].r -> data[1].d) / log(10); // log10(x) = ln(x) / ln(10)
+    }
     /* calculate derivatives */
     for (int32_t i = 0; i < self.content -> length; i++) {
         if (self.content -> length == 1) {
@@ -113,7 +117,7 @@ void render() {
     int32_t dependentVariables = self.content -> data[0].r -> length - 1;
     double yScale[dependentVariables];
     for (int32_t i = 0; i < dependentVariables; i++) {
-        yScale[i] = (self.graphTopY - self.graphBottomY) / (self.graphMaximums -> data[0 + 1].d - self.graphMinimums -> data[0 + 1].d); // change to i + 1 for unique yScales per column
+        yScale[i] = (self.graphTopY - self.graphBottomY) / (self.graphMaximums -> data[i + 1].d - self.graphMinimums -> data[i + 1].d); // change to i + 1 for unique yScales per column
     }
     for (int32_t j = 0; j < dependentVariables; j++) {
         switch (j) {
@@ -193,7 +197,7 @@ void render() {
         turtleTextWriteUnicodef(self.graphLeftX - pensizehalf - 10, tickY, 8, 100, "%.3lf", (tickY - self.graphBottomY + pensizehalf) / adjustedYScale + self.graphMinimums -> data[1].d);
     }
     /* render mouse */
-    int32_t column = 1;
+    int32_t column = 3;
     turtlePenSize(5);
     if (turtle.mouseX > self.graphLeftX - pensizehalf * 2 && turtle.mouseX < self.graphRightX + pensizehalf * 2 && turtle.mouseY > self.graphBottomY && turtle.mouseY < self.graphTopY) {
         if (mouseIndex >= 0 && mouseIndex < self.content -> length) {
@@ -203,9 +207,9 @@ void render() {
             turtlePenDown();
             turtlePenUp();
             double xDisplay = self.content -> data[mouseIndex].r -> data[0].d;
-            turtleRectangle(xValue + 5, yValue + 4, xValue + 5 + 4 + turtleTextGetStringLengthf(8, "%.0lf, %.3lf", xDisplay, self.content -> data[mouseIndex].r -> data[2].d), yValue + 16);
+            turtleRectangle(xValue + 5, yValue + 4, xValue + 5 + 4 + turtleTextGetStringLengthf(8, "%.0lf, %.3lf", xDisplay, self.content -> data[mouseIndex].r -> data[column].d), yValue + 16);
             tt_setColor(TT_COLOR_BACKGROUND);
-            turtleTextWriteUnicodef(xValue + 7, yValue + 10, 8, 0, "%.0lf, %.3lf", xDisplay, self.content -> data[mouseIndex].r -> data[1].d);
+            turtleTextWriteUnicodef(xValue + 7, yValue + 10, 8, 0, "%.0lf, %.3lf", xDisplay, self.content -> data[mouseIndex].r -> data[column].d);
         }
     }
 }
