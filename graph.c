@@ -33,9 +33,11 @@ void init() {
 
 int32_t import(char *filename) {
     strcpy(self.filename, filename);
-    list_free(self.content);
+    if (self.content != NULL) {
+        list_free(self.content);
+    }
     self.content = osToolsLoadCSVDouble(self.filename, OSTOOLS_CSV_ROW);
-    if (self.content -> length < 1) {
+    if (self.content == NULL || self.content -> length < 1) {
         return -1;
     }
     list_delete(self.content, 0);
@@ -77,7 +79,7 @@ int32_t import(char *filename) {
 }
 
 void render() {
-    if (self.content -> length < 1) {
+    if (self.content == NULL || self.content -> length < 1) {
         return;
     }
     /* render data */
@@ -171,6 +173,7 @@ void parseRibbonOutput() {
             }
         }
         if (tt_ribbon.output[2] == 4) { // Open
+            list_clear(osToolsFileDialog.selectedFilenames);
             if (osToolsFileDialogOpen(OSTOOLS_FILE_DIALOG_SINGLE_SELECT, OSTOOLS_FILE_DIALOG_FILE, "", NULL) != -1) {
                 import(osToolsFileDialog.selectedFilenames -> data[0].s);
                 printf("Loaded data from: %s\n", osToolsFileDialog.selectedFilenames -> data[0].s);
@@ -249,6 +252,7 @@ int main(int argc, char *argv[]) {
     /* initialise osTools */
     osToolsInit(argv[0], window); // must include argv[0] to get executableFilepath, must include GLFW window
     osToolsFileDialogAddGlobalExtension("txt"); // add txt to extension restrictions
+    osToolsFileDialogAddGlobalExtension("csv"); // add csv to extension restrictions
 
     init();
     if (argc > 1) {
