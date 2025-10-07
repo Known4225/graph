@@ -55,6 +55,29 @@ int32_t import(char *filename) {
             self.content -> data[i].r = swap;
         }
     }
+    /* calculate derivatives */
+    for (int32_t i = 0; i < self.content -> length; i++) {
+        if (self.content -> length == 1) {
+            list_append(self.content -> data[i].r, (unitype) 0.0, 'd');
+            continue;
+        }
+        if (i == 0) {
+            list_append(self.content -> data[i].r, (unitype) (self.content -> data[1].r -> data[1].d - self.content -> data[0].r -> data[1].d), 'd');
+        } else {
+            list_append(self.content -> data[i].r, (unitype) (self.content -> data[i].r -> data[1].d - self.content -> data[i - 1].r -> data[1].d), 'd');
+        }
+    }
+    for (int32_t i = 0; i < self.content -> length; i++) {
+        if (self.content -> length == 1) {
+            list_append(self.content -> data[i].r, (unitype) 0.0, 'd');
+            continue;
+        }
+        if (i == 0) {
+            list_append(self.content -> data[i].r, (unitype) (self.content -> data[1].r -> data[2].d - self.content -> data[0].r -> data[2].d), 'd');
+        } else {
+            list_append(self.content -> data[i].r, (unitype) (self.content -> data[i].r -> data[2].d - self.content -> data[i - 1].r -> data[2].d), 'd');
+        }
+    }
     /* get top and bottom bounds */
     self.graphMinimums -> data[0].d = self.content -> data[0].r -> data[0].d;
     self.graphMaximums -> data[0].d = self.content -> data[self.content -> length - 1].r -> data[0].d;
@@ -86,22 +109,59 @@ void render() {
     turtlePenSize(1);
     int32_t mouseIndex = -1;
     double minMouseX = 1000;
-    tt_setColor(TT_COLOR_RED);
     double xScale = (self.graphRightX - self.graphLeftX) / (self.graphMaximums -> data[0].d - self.graphMinimums -> data[0].d);
-    double yScale = (self.graphTopY - self.graphBottomY) / (self.graphMaximums -> data[1].d - self.graphMinimums -> data[1].d);
-    for (int32_t i = 0; i < self.content -> length; i++) {
-        double xValue = (self.content -> data[i].r -> data[0].d - self.graphMinimums -> data[0].d) * xScale + self.graphLeftX;
-        double yValue = (self.content -> data[i].r -> data[1].d - self.graphMinimums -> data[1].d) * yScale + self.graphBottomY;
-        turtleGoto(xValue, yValue);
-        if (i == 0) {
-            turtlePenDown();
-        }
-        if (fabs(xValue - turtle.mouseX) < minMouseX) {
-            mouseIndex = i;
-            minMouseX = fabs(xValue - turtle.mouseX);
-        }
+    int32_t dependentVariables = self.content -> data[0].r -> length - 1;
+    double yScale[dependentVariables];
+    for (int32_t i = 0; i < dependentVariables; i++) {
+        yScale[i] = (self.graphTopY - self.graphBottomY) / (self.graphMaximums -> data[0 + 1].d - self.graphMinimums -> data[0 + 1].d); // change to i + 1 for unique yScales per column
     }
-    turtlePenUp();
+    for (int32_t j = 0; j < dependentVariables; j++) {
+        switch (j) {
+        case 0:
+        tt_setColor(TT_COLOR_RED);
+        break;
+        case 1:
+        tt_setColor(TT_COLOR_ORANGE);
+        break;
+        case 2:
+        tt_setColor(TT_COLOR_YELLOW);
+        break;
+        case 3:
+        tt_setColor(TT_COLOR_GREEN);
+        break;
+        case 4:
+        tt_setColor(TT_COLOR_CYAN);
+        break;
+        case 5:
+        tt_setColor(TT_COLOR_BLUE);
+        break;
+        case 6:
+        tt_setColor(TT_COLOR_PURPLE);
+        break;
+        case 7:
+        tt_setColor(TT_COLOR_MAGENTA);
+        break;
+        case 8:
+        tt_setColor(TT_COLOR_PINK);
+        break;
+        default:
+        tt_setColor(TT_COLOR_BLACK);
+        break;
+        }
+        for (int32_t i = 0; i < self.content -> length; i++) {
+            double xValue = (self.content -> data[i].r -> data[0].d - self.graphMinimums -> data[0].d) * xScale + self.graphLeftX;
+            double yValue = (self.content -> data[i].r -> data[j + 1].d - self.graphMinimums -> data[j + 1].d) * yScale[j] + self.graphBottomY;
+            turtleGoto(xValue, yValue);
+            if (i == 0) {
+                turtlePenDown();
+            }
+            if (fabs(xValue - turtle.mouseX) < minMouseX) {
+                mouseIndex = i;
+                minMouseX = fabs(xValue - turtle.mouseX);
+            }
+        }
+        turtlePenUp();
+    }
     /* render graph */
     double pensizehalf = 1.5;
     tt_setColor(TT_COLOR_TEXT);
@@ -133,16 +193,17 @@ void render() {
         turtleTextWriteUnicodef(self.graphLeftX - pensizehalf - 10, tickY, 8, 100, "%.3lf", (tickY - self.graphBottomY + pensizehalf) / adjustedYScale + self.graphMinimums -> data[1].d);
     }
     /* render mouse */
+    int32_t column = 2;
     turtlePenSize(5);
     if (turtle.mouseX > self.graphLeftX - pensizehalf * 2 && turtle.mouseX < self.graphRightX + pensizehalf * 2 && turtle.mouseY > self.graphBottomY && turtle.mouseY < self.graphTopY) {
         if (mouseIndex >= 0 && mouseIndex < self.content -> length) {
             double xValue = (self.content -> data[mouseIndex].r -> data[0].d - self.graphMinimums -> data[0].d) * xScale + self.graphLeftX;
-            double yValue = (self.content -> data[mouseIndex].r -> data[1].d - self.graphMinimums -> data[1].d) * yScale + self.graphBottomY;
+            double yValue = (self.content -> data[mouseIndex].r -> data[column].d - self.graphMinimums -> data[column].d) * yScale[column - 1] + self.graphBottomY;
             turtleGoto(xValue, yValue);
             turtlePenDown();
             turtlePenUp();
             double xDisplay = self.content -> data[mouseIndex].r -> data[0].d;
-            turtleRectangle(xValue + 5, yValue + 4, xValue + 5 + 4 + turtleTextGetStringLengthf(8, "%.0lf, %.3lf", xDisplay, self.content -> data[mouseIndex].r -> data[1].d), yValue + 16);
+            turtleRectangle(xValue + 5, yValue + 4, xValue + 5 + 4 + turtleTextGetStringLengthf(8, "%.0lf, %.3lf", xDisplay, self.content -> data[mouseIndex].r -> data[2].d), yValue + 16);
             tt_setColor(TT_COLOR_BACKGROUND);
             turtleTextWriteUnicodef(xValue + 7, yValue + 10, 8, 0, "%.0lf, %.3lf", xDisplay, self.content -> data[mouseIndex].r -> data[1].d);
         }
