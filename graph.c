@@ -110,7 +110,8 @@ void render() {
     turtleGoto(self.graphRightX + pensizehalf, self.graphBottomY - pensizehalf);
     turtlePenUp();
     turtlePenSize(pensizehalf);
-    turtleTextWriteString("Seconds", (self.graphLeftX + self.graphRightX) / 2, self.graphBottomY - pensizehalf - 30, 8, 50);
+    turtleTextWriteString("SiPM DAC Count", (self.graphLeftX + self.graphRightX) / 2, self.graphBottomY - pensizehalf - 28, 8, 50);
+    turtleTextWriteStringRotated("Ambient Light Current", self.graphLeftX - pensizehalf - 60, (self.graphBottomY + self.graphTopY) / 2, 8, 50, -90);
     for (int32_t i = 0; i < self.xTicks; i++) {
         double tickX = self.graphLeftX - pensizehalf + (self.graphRightX - self.graphLeftX + pensizehalf * 2) / (self.xTicks - 1) * i;
         turtleGoto(tickX, self.graphBottomY - 2);
@@ -118,7 +119,7 @@ void render() {
         turtleGoto(tickX, self.graphBottomY - 6);
         turtlePenUp();
         double adjustedXScale = (self.graphRightX - self.graphLeftX + pensizehalf * 2) / (self.graphMaximums -> data[0].d - self.graphMinimums -> data[0].d);
-        turtleTextWriteStringf(tickX, self.graphBottomY - pensizehalf - 12, 8, 50, "%.0lf", (tickX - self.graphLeftX + pensizehalf) / adjustedXScale);
+        turtleTextWriteStringf(tickX, self.graphBottomY - pensizehalf - 12, 8, 50, "%.0lf", (tickX - self.graphLeftX + pensizehalf) / adjustedXScale + self.graphMinimums -> data[0].d);
     }
     for (int32_t i = 0; i < self.yTicks; i++) {
         double tickY = self.graphBottomY - pensizehalf + (self.graphTopY - self.graphBottomY + pensizehalf * 2) / (self.yTicks - 1) * i;
@@ -127,7 +128,7 @@ void render() {
         turtleGoto(self.graphLeftX - 6, tickY);
         turtlePenUp();
         double adjustedYScale = (self.graphTopY - self.graphBottomY + pensizehalf * 2) / (self.graphMaximums -> data[1].d - self.graphMinimums -> data[1].d);
-        turtleTextWriteUnicodef(self.graphLeftX - pensizehalf - 8, tickY, 8, 100, "%.3lfµW", (tickY - self.graphBottomY + pensizehalf) / adjustedYScale + self.graphMinimums -> data[1].d);
+        turtleTextWriteUnicodef(self.graphLeftX - pensizehalf - 10, tickY, 8, 100, "%.3lf", (tickY - self.graphBottomY + pensizehalf) / adjustedYScale + self.graphMinimums -> data[1].d);
     }
     /* render mouse */
     turtlePenSize(5);
@@ -138,10 +139,10 @@ void render() {
             turtleGoto(xValue, yValue);
             turtlePenDown();
             turtlePenUp();
-            double xDisplay = self.content -> data[mouseIndex].r -> data[0].d - self.graphMinimums -> data[0].d;
-            turtleRectangle(xValue + 5, yValue + 4, xValue + 5 + 4 + turtleTextGetStringLengthf(8, "%.0lf, %.3lfuW", xDisplay, self.content -> data[mouseIndex].r -> data[1].d), yValue + 16);
+            double xDisplay = self.content -> data[mouseIndex].r -> data[0].d;
+            turtleRectangle(xValue + 5, yValue + 4, xValue + 5 + 4 + turtleTextGetStringLengthf(8, "%.0lf, %.3lf", xDisplay, self.content -> data[mouseIndex].r -> data[1].d), yValue + 16);
             tt_setColor(TT_COLOR_BACKGROUND);
-            turtleTextWriteUnicodef(xValue + 7, yValue + 10, 8, 0, "%.0lf, %.3lfµW", xDisplay, self.content -> data[mouseIndex].r -> data[1].d);
+            turtleTextWriteUnicodef(xValue + 7, yValue + 10, 8, 0, "%.0lf, %.3lf", xDisplay, self.content -> data[mouseIndex].r -> data[1].d);
         }
     }
 }
