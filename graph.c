@@ -193,7 +193,7 @@ void render() {
         turtleTextWriteUnicodef(self.graphLeftX - pensizehalf - 10, tickY, 8, 100, "%.3lf", (tickY - self.graphBottomY + pensizehalf) / adjustedYScale + self.graphMinimums -> data[1].d);
     }
     /* render mouse */
-    int32_t column = 2;
+    int32_t column = 1;
     turtlePenSize(5);
     if (turtle.mouseX > self.graphLeftX - pensizehalf * 2 && turtle.mouseX < self.graphRightX + pensizehalf * 2 && turtle.mouseY > self.graphBottomY && turtle.mouseY < self.graphTopY) {
         if (mouseIndex >= 0 && mouseIndex < self.content -> length) {
@@ -294,7 +294,7 @@ int main(int argc, char *argv[]) {
     /* Create a windowed mode window and its OpenGL context */
     const GLFWvidmode *monitorSize = glfwGetVideoMode(glfwGetPrimaryMonitor());
     int32_t windowHeight = monitorSize -> height;
-    GLFWwindow *window = glfwCreateWindow(windowHeight * 16 / 9, windowHeight, "turtle demo", NULL, NULL);
+    GLFWwindow *window = glfwCreateWindow(windowHeight * 16 / 9, windowHeight, "graph", NULL, NULL);
     if (!window) {
         glfwTerminate();
         return -1;
