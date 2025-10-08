@@ -31,6 +31,20 @@ void init() {
     self.yTicks = 3;
 }
 
+void applySavitzkyGolay(int32_t index) {
+    /* apply Savitzky-Golay (https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter) */
+    int32_t m = 5;
+    int32_t s = (m - 1) / 2;
+    double C[5] = {-3.0 / 35, 12.0 / 35, 17.0 / 35, 12.0 / 35, -3.0 / 35};
+    for (int32_t j = s + 1; j < self.content -> length - s; j++) {
+        double sum = 0;
+        for (int32_t i = -s; i <= s; i++) {
+            sum += C[i + 2] * self.content -> data[j + i].r -> data[index].d;
+        }
+        self.content -> data[j].r -> data[index].d = sum;
+    }
+}
+
 int32_t import(char *filename) {
     strcpy(self.filename, filename);
     if (self.content != NULL) {
@@ -57,7 +71,12 @@ int32_t import(char *filename) {
     }
     /* take log10 of original data */
     for (int32_t i = 0; i < self.content -> length; i++) {
-        self.content -> data[i].r -> data[1].d = log(self.content -> data[i].r -> data[1].d) / log(10); // log10(x) = ln(x) / ln(10)
+        if (self.content -> data[i].r -> data[1].d != 0) {
+            self.content -> data[i].r -> data[1].d = log(self.content -> data[i].r -> data[1].d) / log(10); // log10(x) = ln(x) / ln(10)
+        }
+    }
+    for (int32_t i = 0; i < 15; i++) {
+        applySavitzkyGolay(1);
     }
     /* calculate derivatives */
     for (int32_t i = 0; i < self.content -> length; i++) {
@@ -71,6 +90,9 @@ int32_t import(char *filename) {
             list_append(self.content -> data[i].r, (unitype) (self.content -> data[i].r -> data[1].d - self.content -> data[i - 1].r -> data[1].d), 'd');
         }
     }
+    for (int32_t i = 0; i < 15; i++) {
+        applySavitzkyGolay(2);
+    }
     for (int32_t i = 0; i < self.content -> length; i++) {
         if (self.content -> length == 1) {
             list_append(self.content -> data[i].r, (unitype) 0.0, 'd');
@@ -82,9 +104,16 @@ int32_t import(char *filename) {
             list_append(self.content -> data[i].r, (unitype) (self.content -> data[i].r -> data[2].d - self.content -> data[i - 1].r -> data[2].d), 'd');
         }
     }
+    // for (int32_t i = 0; i < 15; i++) {
+    //     applySavitzkyGolay(3);
+    // }
     /* get top and bottom bounds */
     self.graphMinimums -> data[0].d = self.content -> data[0].r -> data[0].d;
     self.graphMaximums -> data[0].d = self.content -> data[self.content -> length - 1].r -> data[0].d;
+    for (int32_t i = 1; i < self.graphMinimums -> length; i++) {
+        self.graphMinimums -> data[i].d = 100000000000.0;
+        self.graphMaximums -> data[i].d = -100000000000.0;
+    }
     for (int32_t i = 0; i < self.content -> length; i++) {
         list_t *dataPoint = self.content -> data[i].r;
         while (dataPoint -> length > self.graphMaximums -> length) {
@@ -240,8 +269,11 @@ void parseRibbonOutput() {
         if (tt_ribbon.output[2] == 4) { // Open
             list_clear(osToolsFileDialog.selectedFilenames);
             if (osToolsFileDialogOpen(OSTOOLS_FILE_DIALOG_SINGLE_SELECT, OSTOOLS_FILE_DIALOG_FILE, "", NULL) != -1) {
-                import(osToolsFileDialog.selectedFilenames -> data[0].s);
-                printf("Loaded data from: %s\n", osToolsFileDialog.selectedFilenames -> data[0].s);
+                if (import(osToolsFileDialog.selectedFilenames -> data[0].s) == 0) {
+                    printf("Loaded data from: %s\n", osToolsFileDialog.selectedFilenames -> data[0].s);
+                } else {
+                    printf("Failed to load data from: %s\n", osToolsFileDialog.selectedFilenames -> data[0].s);
+                }
             }
         }
     }
