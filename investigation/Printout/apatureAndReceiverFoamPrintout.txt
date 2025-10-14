@@ -1,0 +1,441 @@
+sipmVoltageBreakdown: Starting Calibration Procedure at 1760473797
+Connecting to Lidar on COM3
+Successfully set all relevant lidar settings
+Sweeping Voltage 144
+Sipm DAC Count, measurement
+4000, 86.8440366972477
+3990, 87.29816513761467
+3980, 87.0137614678899
+3970, 87.49694189602447
+3960, 86.85932721712538
+3950, 87.99694189602447
+3940, 87.20948012232417
+3930, 87.98015267175573
+3920, 87.03363914373088
+3910, 87.3776758409786
+3900, 86.9571865443425
+3890, 87.24122137404581
+3880, 87.79541984732825
+3870, 87.96941896024465
+3860, 87.2782874617737
+3850, 86.88990825688073
+3840, 87.56880733944953
+3830, 87.75535168195718
+3820, 87.38073394495413
+3810, 87.18348623853211
+3800, 87.66055045871559
+3790, 86.40214067278288
+3780, 86.61009174311927
+3770, 87.3776758409786
+3760, 87.03058103975535
+3750, 86.90519877675841
+3740, 87.16207951070336
+3730, 87.75382262996942
+3720, 87.42595419847328
+3710, 88.1559633027523
+3700, 87.38226299694189
+3690, 88.45412844036697
+3680, 87.58256880733946
+3670, 87.49694189602447
+3660, 87.55045871559633
+3650, 87.13455657492355
+3640, 88.2308868501529
+3630, 87.85321100917432
+3620, 87.3914373088685
+3610, 87.74923547400611
+3600, 87.47094801223241
+3590, 87.20489296636086
+3580, 88.0793893129771
+3570, 87.68195718654434
+3560, 87.92966360856269
+3550, 88.41896024464832
+3540, 88.04434250764525
+3530, 87.81192660550458
+3520, 87.34609494640122
+3510, 87.41984732824427
+3500, 86.87920489296636
+3490, 87.40978593272172
+3480, 87.52905198776759
+3470, 86.84097859327217
+3460, 86.41743119266054
+3450, 86.92036753445636
+3440, 88.10703363914374
+3430, 88.18348623853211
+3420, 87.80886850152905
+3410, 87.40366972477064
+3400, 87.81957186544342
+3390, 87.71559633027523
+3380, 87.74159021406727
+3370, 87.72935779816514
+3360, 87.36850152905198
+3350, 87.43883792048929
+3340, 87.51834862385321
+3330, 87.55589586523736
+3320, 87.79051987767583
+3310, 87.61467889908256
+3300, 87.62844036697248
+3290, 87.67278287461774
+3280, 87.48012232415903
+3270, 87.4908256880734
+3260, 87.85932721712538
+3250, 87.72935779816514
+3240, 87.19877675840979
+3230, 87.30886850152905
+3220, 87.12824427480916
+3210, 87.39908256880734
+3200, 87.1697247706422
+3190, 87.18625954198474
+3180, 87.58409785932722
+3170, 86.98165137614679
+3160, 87.60550458715596
+3150, 86.87003058103976
+3140, 87.4954128440367
+3130, 87.14373088685015
+3120, 88.09327217125383
+3110, 87.84709480122324
+3100, 87.21100917431193
+3090, 87.72782874617737
+3080, 87.8776758409786
+3070, 87.77404580152671
+3060, 87.70030581039755
+3050, 88.13435114503817
+3040, 87.18654434250764
+3030, 86.92966360856269
+3020, 87.58256880733946
+3010, 87.88379204892966
+3000, 87.03669724770643
+2990, 86.99847094801223
+2980, 87.85321100917432
+2970, 86.91896024464832
+2960, 87.20489296636086
+2950, 87.52213740458015
+2940, 88.01529051987768
+2930, 87.30886850152905
+2920, 87.6559633027523
+2910, 88.31192660550458
+2900, 87.84556574923548
+2890, 87.56422018348624
+2880, 87.81651376146789
+2870, 87.9954128440367
+2860, 88.0137614678899
+2850, 88.09633027522936
+2840, 87.02450229709035
+2830, 87.57339449541284
+2820, 87.5114503816794
+2810, 87.33180428134557
+2800, 87.41590214067278
+2790, 87.4571865443425
+2780, 88.07492354740062
+2770, 87.47094801223241
+2760, 87.31297709923665
+2750, 87.0428134556575
+2740, 87.52599388379205
+2730, 88.08409785932722
+2720, 87.74885145482389
+2710, 87.39602446483181
+2700, 87.37920489296636
+2690, 87.5969465648855
+2680, 87.6788990825688
+2670, 86.87480916030535
+2660, 88.29770992366412
+2650, 88.06727828746178
+2640, 87.63149847094802
+2630, 88.34709480122324
+2620, 87.54434250764525
+2610, 87.24159021406727
+2600, 88.35015290519878
+2590, 87.16055045871559
+2580, 87.7496183206107
+2570, 87.76605504587155
+Completed sipm calibration at 1760474402 - total time: 605 seconds
+
+Terminal:
+python sipmBreakdown.py sipmPrint.txt sipmLog.txt COM3 xml\MeasurementLidarPSSI_100_us_59235.xml 4000 2550 10
+setting sipm dac count to: 4000
+- samples: 654, sum: 56796
+setting sipm dac count to: 3990
+- samples: 654, sum: 57093
+setting sipm dac count to: 3980
+- samples: 654, sum: 56907
+setting sipm dac count to: 3970
+- samples: 654, sum: 57223
+setting sipm dac count to: 3960
+- samples: 654, sum: 56806
+setting sipm dac count to: 3950
+- samples: 654, sum: 57550
+setting sipm dac count to: 3940
+- samples: 654, sum: 57035
+setting sipm dac count to: 3930
+- samples: 655, sum: 57627
+setting sipm dac count to: 3920
+- samples: 654, sum: 56920
+setting sipm dac count to: 3910
+- samples: 654, sum: 57145
+setting sipm dac count to: 3900
+- samples: 654, sum: 56870
+setting sipm dac count to: 3890
+- samples: 655, sum: 57143
+setting sipm dac count to: 3880
+- samples: 655, sum: 57506
+setting sipm dac count to: 3870
+- samples: 654, sum: 57532
+setting sipm dac count to: 3860
+- samples: 654, sum: 57080
+setting sipm dac count to: 3850
+- samples: 654, sum: 56826
+setting sipm dac count to: 3840
+- samples: 654, sum: 57270
+setting sipm dac count to: 3830
+- samples: 654, sum: 57392
+setting sipm dac count to: 3820
+- samples: 654, sum: 57147
+setting sipm dac count to: 3810
+- samples: 654, sum: 57018
+setting sipm dac count to: 3800
+- samples: 654, sum: 57330
+setting sipm dac count to: 3790
+- samples: 654, sum: 56507
+setting sipm dac count to: 3780
+- samples: 654, sum: 56643
+setting sipm dac count to: 3770
+- samples: 654, sum: 57145
+setting sipm dac count to: 3760
+- samples: 654, sum: 56918
+setting sipm dac count to: 3750
+- samples: 654, sum: 56836
+setting sipm dac count to: 3740
+- samples: 654, sum: 57004
+setting sipm dac count to: 3730
+- samples: 654, sum: 57391
+setting sipm dac count to: 3720
+- samples: 655, sum: 57264
+setting sipm dac count to: 3710
+- samples: 654, sum: 57654
+setting sipm dac count to: 3700
+- samples: 654, sum: 57148
+setting sipm dac count to: 3690
+- samples: 654, sum: 57849
+setting sipm dac count to: 3680
+- samples: 654, sum: 57279
+setting sipm dac count to: 3670
+- samples: 654, sum: 57223
+setting sipm dac count to: 3660
+- samples: 654, sum: 57258
+setting sipm dac count to: 3650
+- samples: 654, sum: 56986
+setting sipm dac count to: 3640
+- samples: 654, sum: 57703
+setting sipm dac count to: 3630
+- samples: 654, sum: 57456
+setting sipm dac count to: 3620
+- samples: 654, sum: 57154
+setting sipm dac count to: 3610
+- samples: 654, sum: 57388
+setting sipm dac count to: 3600
+- samples: 654, sum: 57206
+setting sipm dac count to: 3590
+- samples: 654, sum: 57032
+setting sipm dac count to: 3580
+- samples: 655, sum: 57692
+setting sipm dac count to: 3570
+- samples: 654, sum: 57344
+setting sipm dac count to: 3560
+- samples: 654, sum: 57506
+setting sipm dac count to: 3550
+- samples: 654, sum: 57826
+setting sipm dac count to: 3540
+- samples: 654, sum: 57581
+setting sipm dac count to: 3530
+- samples: 654, sum: 57429
+setting sipm dac count to: 3520
+- samples: 653, sum: 57037
+setting sipm dac count to: 3510
+- samples: 655, sum: 57260
+setting sipm dac count to: 3500
+- samples: 654, sum: 56819
+setting sipm dac count to: 3490
+- samples: 654, sum: 57166
+setting sipm dac count to: 3480
+- samples: 654, sum: 57244
+setting sipm dac count to: 3470
+- samples: 654, sum: 56794
+setting sipm dac count to: 3460
+- samples: 654, sum: 56517
+setting sipm dac count to: 3450
+- samples: 653, sum: 56759
+setting sipm dac count to: 3440
+- samples: 654, sum: 57622
+setting sipm dac count to: 3430
+- samples: 654, sum: 57672
+setting sipm dac count to: 3420
+- samples: 654, sum: 57427
+setting sipm dac count to: 3410
+- samples: 654, sum: 57162
+setting sipm dac count to: 3400
+- samples: 654, sum: 57434
+setting sipm dac count to: 3390
+- samples: 654, sum: 57366
+setting sipm dac count to: 3380
+- samples: 654, sum: 57383
+setting sipm dac count to: 3370
+- samples: 654, sum: 57375
+setting sipm dac count to: 3360
+- samples: 654, sum: 57139
+setting sipm dac count to: 3350
+- samples: 654, sum: 57185
+setting sipm dac count to: 3340
+- samples: 654, sum: 57237
+setting sipm dac count to: 3330
+- samples: 653, sum: 57174
+setting sipm dac count to: 3320
+- samples: 654, sum: 57415
+setting sipm dac count to: 3310
+- samples: 654, sum: 57300
+setting sipm dac count to: 3300
+- samples: 654, sum: 57309
+setting sipm dac count to: 3290
+- samples: 654, sum: 57338
+setting sipm dac count to: 3280
+- samples: 654, sum: 57212
+setting sipm dac count to: 3270
+- samples: 654, sum: 57219
+setting sipm dac count to: 3260
+- samples: 654, sum: 57460
+setting sipm dac count to: 3250
+- samples: 654, sum: 57375
+setting sipm dac count to: 3240
+- samples: 654, sum: 57028
+setting sipm dac count to: 3230
+- samples: 654, sum: 57100
+setting sipm dac count to: 3220
+- samples: 655, sum: 57069
+setting sipm dac count to: 3210
+- samples: 654, sum: 57159
+setting sipm dac count to: 3200
+- samples: 654, sum: 57009
+setting sipm dac count to: 3190
+- samples: 655, sum: 57107
+setting sipm dac count to: 3180
+- samples: 654, sum: 57280
+setting sipm dac count to: 3170
+- samples: 654, sum: 56886
+setting sipm dac count to: 3160
+- samples: 654, sum: 57294
+setting sipm dac count to: 3150
+- samples: 654, sum: 56813
+setting sipm dac count to: 3140
+- samples: 654, sum: 57222
+setting sipm dac count to: 3130
+- samples: 654, sum: 56992
+setting sipm dac count to: 3120
+- samples: 654, sum: 57613
+setting sipm dac count to: 3110
+- samples: 654, sum: 57452
+setting sipm dac count to: 3100
+- samples: 654, sum: 57036
+setting sipm dac count to: 3090
+- samples: 654, sum: 57374
+setting sipm dac count to: 3080
+- samples: 654, sum: 57472
+setting sipm dac count to: 3070
+- samples: 655, sum: 57492
+setting sipm dac count to: 3060
+- samples: 654, sum: 57356
+setting sipm dac count to: 3050
+- samples: 655, sum: 57728
+setting sipm dac count to: 3040
+- samples: 654, sum: 57020
+setting sipm dac count to: 3030
+- samples: 654, sum: 56852
+setting sipm dac count to: 3020
+- samples: 654, sum: 57279
+setting sipm dac count to: 3010
+- samples: 654, sum: 57476
+setting sipm dac count to: 3000
+- samples: 654, sum: 56922
+setting sipm dac count to: 2990
+- samples: 654, sum: 56897
+setting sipm dac count to: 2980
+- samples: 654, sum: 57456
+setting sipm dac count to: 2970
+- samples: 654, sum: 56845
+setting sipm dac count to: 2960
+- samples: 654, sum: 57032
+setting sipm dac count to: 2950
+- samples: 655, sum: 57327
+setting sipm dac count to: 2940
+- samples: 654, sum: 57562
+setting sipm dac count to: 2930
+- samples: 654, sum: 57100
+setting sipm dac count to: 2920
+- samples: 654, sum: 57327
+setting sipm dac count to: 2910
+- samples: 654, sum: 57756
+setting sipm dac count to: 2900
+- samples: 654, sum: 57451
+setting sipm dac count to: 2890
+- samples: 654, sum: 57267
+setting sipm dac count to: 2880
+- samples: 654, sum: 57432
+setting sipm dac count to: 2870
+- samples: 654, sum: 57549
+setting sipm dac count to: 2860
+- samples: 654, sum: 57561
+setting sipm dac count to: 2850
+- samples: 654, sum: 57615
+setting sipm dac count to: 2840
+- samples: 653, sum: 56827
+setting sipm dac count to: 2830
+- samples: 654, sum: 57273
+setting sipm dac count to: 2820
+- samples: 655, sum: 57320
+setting sipm dac count to: 2810
+- samples: 654, sum: 57115
+setting sipm dac count to: 2800
+- samples: 654, sum: 57170
+setting sipm dac count to: 2790
+- samples: 654, sum: 57197
+setting sipm dac count to: 2780
+- samples: 654, sum: 57601
+setting sipm dac count to: 2770
+- samples: 654, sum: 57206
+setting sipm dac count to: 2760
+- samples: 655, sum: 57190
+setting sipm dac count to: 2750
+- samples: 654, sum: 56926
+setting sipm dac count to: 2740
+- samples: 654, sum: 57242
+setting sipm dac count to: 2730
+- samples: 654, sum: 57607
+setting sipm dac count to: 2720
+- samples: 653, sum: 57300
+setting sipm dac count to: 2710
+- samples: 654, sum: 57157
+setting sipm dac count to: 2700
+- samples: 654, sum: 57146
+setting sipm dac count to: 2690
+- samples: 655, sum: 57376
+setting sipm dac count to: 2680
+- samples: 654, sum: 57342
+setting sipm dac count to: 2670
+- samples: 655, sum: 56903
+setting sipm dac count to: 2660
+- samples: 655, sum: 57835
+setting sipm dac count to: 2650
+- samples: 654, sum: 57596
+setting sipm dac count to: 2640
+- samples: 654, sum: 57311
+setting sipm dac count to: 2630
+- samples: 654, sum: 57779
+setting sipm dac count to: 2620
+- samples: 654, sum: 57254
+setting sipm dac count to: 2610
+- samples: 654, sum: 57056
+setting sipm dac count to: 2600
+- samples: 654, sum: 57781
+setting sipm dac count to: 2590
+- samples: 654, sum: 57003
+setting sipm dac count to: 2580
+- samples: 655, sum: 57476
+setting sipm dac count to: 2570
+- samples: 654, sum: 57399

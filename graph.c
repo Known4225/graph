@@ -70,42 +70,39 @@ int32_t import(char *filename) {
         }
     }
     /* take log10 of original data */
-    for (int32_t i = 0; i < self.content -> length; i++) {
-        if (self.content -> data[i].r -> data[1].d != 0) {
-            self.content -> data[i].r -> data[1].d = log(self.content -> data[i].r -> data[1].d) / log(10); // log10(x) = ln(x) / ln(10)
-        }
-    }
-    for (int32_t i = 0; i < 15; i++) {
-        applySavitzkyGolay(1);
-    }
-    /* calculate derivatives */
-    for (int32_t i = 0; i < self.content -> length; i++) {
-        if (self.content -> length == 1) {
-            list_append(self.content -> data[i].r, (unitype) 0.0, 'd');
-            continue;
-        }
-        if (i == 0) {
-            list_append(self.content -> data[i].r, (unitype) (self.content -> data[1].r -> data[1].d - self.content -> data[0].r -> data[1].d), 'd');
-        } else {
-            list_append(self.content -> data[i].r, (unitype) (self.content -> data[i].r -> data[1].d - self.content -> data[i - 1].r -> data[1].d), 'd');
-        }
-    }
-    for (int32_t i = 0; i < 15; i++) {
-        applySavitzkyGolay(2);
-    }
-    for (int32_t i = 0; i < self.content -> length; i++) {
-        if (self.content -> length == 1) {
-            list_append(self.content -> data[i].r, (unitype) 0.0, 'd');
-            continue;
-        }
-        if (i == 0) {
-            list_append(self.content -> data[i].r, (unitype) (self.content -> data[1].r -> data[2].d - self.content -> data[0].r -> data[2].d), 'd');
-        } else {
-            list_append(self.content -> data[i].r, (unitype) (self.content -> data[i].r -> data[2].d - self.content -> data[i - 1].r -> data[2].d), 'd');
-        }
-    }
+    // for (int32_t i = 0; i < self.content -> length; i++) {
+    //     if (self.content -> data[i].r -> data[1].d != 0) {
+    //         self.content -> data[i].r -> data[1].d = log(self.content -> data[i].r -> data[1].d) / log(10); // log10(x) = ln(x) / ln(10)
+    //     }
+    // }
     // for (int32_t i = 0; i < 15; i++) {
-    //     applySavitzkyGolay(3);
+    //     applySavitzkyGolay(1);
+    // }
+    /* calculate derivatives */
+    // for (int32_t i = 0; i < self.content -> length; i++) {
+    //     if (self.content -> length == 1) {
+    //         list_append(self.content -> data[i].r, (unitype) 0.0, 'd');
+    //         continue;
+    //     }
+    //     if (i == 0) {
+    //         list_append(self.content -> data[i].r, (unitype) (self.content -> data[1].r -> data[1].d - self.content -> data[0].r -> data[1].d), 'd');
+    //     } else {
+    //         list_append(self.content -> data[i].r, (unitype) (self.content -> data[i].r -> data[1].d - self.content -> data[i - 1].r -> data[1].d), 'd');
+    //     }
+    // }
+    // for (int32_t i = 0; i < 15; i++) {
+    //     applySavitzkyGolay(2);
+    // }
+    // for (int32_t i = 0; i < self.content -> length; i++) {
+    //     if (self.content -> length == 1) {
+    //         list_append(self.content -> data[i].r, (unitype) 0.0, 'd');
+    //         continue;
+    //     }
+    //     if (i == 0) {
+    //         list_append(self.content -> data[i].r, (unitype) (self.content -> data[1].r -> data[2].d - self.content -> data[0].r -> data[2].d), 'd');
+    //     } else {
+    //         list_append(self.content -> data[i].r, (unitype) (self.content -> data[i].r -> data[2].d - self.content -> data[i - 1].r -> data[2].d), 'd');
+    //     }
     // }
     /* get top and bottom bounds */
     self.graphMinimums -> data[0].d = self.content -> data[0].r -> data[0].d;
@@ -226,7 +223,7 @@ void render() {
         turtleTextWriteUnicodef(self.graphLeftX - pensizehalf - 10, tickY, 8, 100, "%.3lf", (tickY - self.graphBottomY + pensizehalf) / adjustedYScale + self.graphMinimums -> data[1].d);
     }
     /* render mouse */
-    int32_t column = 3;
+    int32_t column = 1;
     turtlePenSize(5);
     if (turtle.mouseX > self.graphLeftX - pensizehalf * 2 && turtle.mouseX < self.graphRightX + pensizehalf * 2 && turtle.mouseY > self.graphBottomY && turtle.mouseY < self.graphTopY) {
         if (mouseIndex >= 0 && mouseIndex < self.content -> length) {
