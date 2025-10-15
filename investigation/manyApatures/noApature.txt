@@ -1,0 +1,15 @@
+sipmVoltageBreakdown: Starting Calibration Procedure at 1760477457
+Connecting to Lidar on COM3
+Successfully set all relevant lidar settings
+Sweeping Voltage 9
+Sipm DAC Count, measurement
+1600, 987.0840978593272
+1590, 877.5672782874618
+1580, 879.5428134556574
+1570, 973.8256880733945
+1560, 990.2879019908116
+1550, 995.7324159021407
+1540, 1000.9495412844037
+1530, 1010.065749235474
+1520, 1030.5535168195718
+Completed sipm calibration at 1760477498 - total time: 41 seconds

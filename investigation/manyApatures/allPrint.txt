@@ -1,0 +1,199 @@
+C:\Users\rsrichai\Information\lidar-tof-python-and-matlab-scripts>python sipmBreakdown.py sipmPrint.txt sipmLog.txt COM3 xml\MeasurementLidarPSSI_100_us_59235.xml 1600 1500 10
+setting sipm dac count to: 1600
+- samples: 654, sum: 645553
+setting sipm dac count to: 1590
+- samples: 654, sum: 573929
+setting sipm dac count to: 1580
+- samples: 654, sum: 575221
+setting sipm dac count to: 1570
+- samples: 654, sum: 636882
+setting sipm dac count to: 1560
+- samples: 653, sum: 646658
+setting sipm dac count to: 1550
+- samples: 654, sum: 651209
+setting sipm dac count to: 1540
+- samples: 654, sum: 654621
+setting sipm dac count to: 1530
+- samples: 654, sum: 660583
+setting sipm dac count to: 1520
+- samples: 654, sum: 673982
+
+C:\Users\rsrichai\Information\lidar-tof-python-and-matlab-scripts>python sipmBreakdown.py sipmPrint.txt sipmLog.txt COM3 xml\MeasurementLidarPSSI_100_us_59235.xml 1600 1500 10
+setting sipm dac count to: 1600
+- samples: 654, sum: 56879
+setting sipm dac count to: 1590
+- samples: 654, sum: 57178
+setting sipm dac count to: 1580
+- samples: 654, sum: 56400
+setting sipm dac count to: 1570
+- samples: 654, sum: 56532
+setting sipm dac count to: 1560
+- samples: 654, sum: 57198
+setting sipm dac count to: 1550
+- samples: 654, sum: 56880
+setting sipm dac count to: 1540
+- samples: 654, sum: 56670
+setting sipm dac count to: 1530
+- samples: 654, sum: 56950
+setting sipm dac count to: 1520
+- samples: 654, sum: 56579
+
+C:\Users\rsrichai\Information\lidar-tof-python-and-matlab-scripts>python sipmBreakdown.py sipmPrint.txt sipmLog.txt COM3 xml\MeasurementLidarPSSI_100_us_59235.xml 1600 1500 10
+setting sipm dac count to: 1600
+- samples: 654, sum: 57072
+setting sipm dac count to: 1590
+- samples: 654, sum: 57358
+setting sipm dac count to: 1580
+- samples: 654, sum: 57105
+setting sipm dac count to: 1570
+- samples: 655, sum: 57297
+setting sipm dac count to: 1560
+- samples: 654, sum: 57221
+setting sipm dac count to: 1550
+- samples: 654, sum: 56356
+setting sipm dac count to: 1540
+- samples: 654, sum: 56790
+setting sipm dac count to: 1530
+- samples: 654, sum: 56880
+setting sipm dac count to: 1520
+- samples: 654, sum: 56802
+
+C:\Users\rsrichai\Information\lidar-tof-python-and-matlab-scripts>python sipmBreakdown.py sipmPrint.txt sipmLog.txt COM3 xml\MeasurementLidarPSSI_100_us_59235.xml 1600 1500 10
+setting sipm dac count to: 1600
+- samples: 654, sum: 57132
+setting sipm dac count to: 1590
+- samples: 654, sum: 57068
+setting sipm dac count to: 1580
+- samples: 654, sum: 56847
+setting sipm dac count to: 1570
+- samples: 654, sum: 57080
+setting sipm dac count to: 1560
+- samples: 654, sum: 56687
+setting sipm dac count to: 1550
+- samples: 654, sum: 57209
+setting sipm dac count to: 1540
+- samples: 654, sum: 56651
+setting sipm dac count to: 1530
+- samples: 654, sum: 56757
+setting sipm dac count to: 1520
+- samples: 654, sum: 57455
+
+C:\Users\rsrichai\Information\lidar-tof-python-and-matlab-scripts>python sipmBreakdown.py sipmPrint.txt sipmLog.txt COM3 xml\MeasurementLidarPSSI_100_us_59235.xml 1600 1500 10
+setting sipm dac count to: 1600
+- samples: 655, sum: 57061
+setting sipm dac count to: 1590
+- samples: 655, sum: 56958
+setting sipm dac count to: 1580
+- samples: 654, sum: 57070
+setting sipm dac count to: 1570
+- samples: 653, sum: 56929
+setting sipm dac count to: 1560
+- samples: 654, sum: 57382
+setting sipm dac count to: 1550
+- samples: 654, sum: 57174
+setting sipm dac count to: 1540
+- samples: 654, sum: 56730
+setting sipm dac count to: 1530
+- samples: 654, sum: 57177
+setting sipm dac count to: 1520
+- samples: 654, sum: 57026
+
+C:\Users\rsrichai\Information\lidar-tof-python-and-matlab-scripts>python sipmBreakdown.py sipmPrint.txt sipmLog.txt COM3 xml\MeasurementLidarPSSI_100_us_59235.xml 1600 1500 10
+setting sipm dac count to: 1600
+- samples: 655, sum: 57217
+setting sipm dac count to: 1590
+- samples: 654, sum: 56972
+setting sipm dac count to: 1580
+- samples: 654, sum: 56900
+setting sipm dac count to: 1570
+- samples: 654, sum: 56804
+setting sipm dac count to: 1560
+- samples: 654, sum: 57733
+setting sipm dac count to: 1550
+- samples: 655, sum: 57130
+setting sipm dac count to: 1540
+- samples: 654, sum: 57260
+setting sipm dac count to: 1530
+- samples: 655, sum: 57038
+setting sipm dac count to: 1520
+- samples: 654, sum: 56810
+
+C:\Users\rsrichai\Information\lidar-tof-python-and-matlab-scripts>python sipmBreakdown.py sipmPrint.txt sipmLog.txt COM3 xml\MeasurementLidarPSSI_100_us_59235.xml 1600 1500 10
+setting sipm dac count to: 1600
+- samples: 654, sum: 56856
+setting sipm dac count to: 1590
+- samples: 655, sum: 56629
+setting sipm dac count to: 1580
+- samples: 654, sum: 56974
+setting sipm dac count to: 1570
+- samples: 654, sum: 56671
+setting sipm dac count to: 1560
+- samples: 654, sum: 56892
+setting sipm dac count to: 1550
+- samples: 654, sum: 57009
+setting sipm dac count to: 1540
+- samples: 654, sum: 57229
+setting sipm dac count to: 1530
+- samples: 654, sum: 56756
+setting sipm dac count to: 1520
+- samples: 654, sum: 57273
+
+C:\Users\rsrichai\Information\lidar-tof-python-and-matlab-scripts>python sipmBreakdown.py sipmPrint.txt sipmLog.txt COM3 xml\MeasurementLidarPSSI_100_us_59235.xml 1600 1500 10
+setting sipm dac count to: 1600
+- samples: 654, sum: 56946
+setting sipm dac count to: 1590
+- samples: 654, sum: 56649
+setting sipm dac count to: 1580
+- samples: 654, sum: 56494
+setting sipm dac count to: 1570
+- samples: 654, sum: 56557
+setting sipm dac count to: 1560
+- samples: 654, sum: 57118
+setting sipm dac count to: 1550
+- samples: 654, sum: 56855
+setting sipm dac count to: 1540
+- samples: 654, sum: 56554
+setting sipm dac count to: 1530
+- samples: 654, sum: 56871
+setting sipm dac count to: 1520
+- samples: 654, sum: 56688
+
+C:\Users\rsrichai\Information\lidar-tof-python-and-matlab-scripts>python sipmBreakdown.py sipmPrint.txt sipmLog.txt COM3 xml\MeasurementLidarPSSI_100_us_59235.xml 1600 1500 10
+setting sipm dac count to: 1600
+- samples: 655, sum: 56899
+setting sipm dac count to: 1590
+- samples: 653, sum: 57056
+setting sipm dac count to: 1580
+- samples: 654, sum: 56813
+setting sipm dac count to: 1570
+- samples: 654, sum: 56598
+setting sipm dac count to: 1560
+- samples: 654, sum: 56756
+setting sipm dac count to: 1550
+- samples: 653, sum: 56869
+setting sipm dac count to: 1540
+- samples: 654, sum: 56454
+setting sipm dac count to: 1530
+- samples: 654, sum: 56664
+setting sipm dac count to: 1520
+- samples: 654, sum: 56530
+
+C:\Users\rsrichai\Information\lidar-tof-python-and-matlab-scripts>python sipmBreakdown.py sipmPrint.txt sipmLog.txt COM3 xml\MeasurementLidarPSSI_100_us_59235.xml 1600 1500 10
+setting sipm dac count to: 1600
+- samples: 654, sum: 56591
+setting sipm dac count to: 1590
+- samples: 654, sum: 56311
+setting sipm dac count to: 1580
+- samples: 655, sum: 56832
+setting sipm dac count to: 1570
+- samples: 654, sum: 56686
+setting sipm dac count to: 1560
+- samples: 654, sum: 56296
+setting sipm dac count to: 1550
+- samples: 654, sum: 56789
+setting sipm dac count to: 1540
+- samples: 654, sum: 56492
+setting sipm dac count to: 1530
+- samples: 655, sum: 57070
+setting sipm dac count to: 1520
+- samples: 654, sum: 56689
